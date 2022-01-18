@@ -26,16 +26,20 @@ body {
 .row-4,
 .row-5{
     display:flex;
+    gap:4px;
 }
 
 p{
+    display:flex;
     border:2px solid black;
     padding:10px;
     font-size:25px;
     border-radius:5px;
+    min-width:40px;
+    min-height:40px;
+    justify-content:center;
+    align-items:center;
 }
 
-.row-1 {
-    gap:3px;
-}
+
 
