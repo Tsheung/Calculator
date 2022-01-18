@@ -18,6 +18,7 @@ body {
 .numbers{
     display:flex;
     flex-direction:column;
+    margin-top:10px;
 }
 
 .row-1,
@@ -26,7 +27,9 @@ body {
 .row-4,
 .row-5{
     display:flex;
-    gap:4px;
+    gap:8px;
+    margin-top:0px;
+    margin-bottom:8px;
 }
 
 p{
@@ -39,6 +42,8 @@ p{
     min-height:40px;
     justify-content:center;
     align-items:center;
+    margin-top:0px;
+    margin-bottom:0px;
 }
 
 
