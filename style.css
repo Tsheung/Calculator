@@ -23,7 +23,8 @@ body {
 .row-1,
 .row-2,
 .row-3,
-.row-4{
+.row-4,
+.row-5{
     display:flex;
 }
 
@@ -32,5 +33,9 @@ p{
     padding:10px;
     font-size:25px;
     border-radius:5px;
+}
+
+.row-1 {
+    gap:3px;
 }
 
