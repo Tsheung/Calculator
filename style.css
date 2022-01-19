@@ -3,6 +3,7 @@ body {
     justify-content:center;
     height:100vh;
     margin:0;
+    font-family:Andale Mono, monospace;
 }
 
 .contain{
@@ -39,8 +40,8 @@ body {
     padding:10px;
     font-size:25px;
     border-radius:5px;
-    min-width:40px;
-    min-height:40px;
+    width:40px;
+    height:40px;
     justify-content:center;
     align-items:center;
     margin-top:0px;
