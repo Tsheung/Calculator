@@ -33,14 +33,19 @@ let displayNum = 0;
 
 
 
-//Click Reaction
-const button = document.querySelectorAll("p");
+//Click Reaction to Only Numbers 
+const button = document.querySelectorAll(".num");
 button.forEach((b) => {
     b.addEventListener("click", () => {
-        console.log(b.innerHTML);
-        
+        //Each click saves to displayNum
+        if(displayNum == 0) {
+            displayNum = b.innerHTML;
+        } else {
+            displayNum = displayNum + b.innerHTML;
+        }
     })
 })
+
 
 
 
