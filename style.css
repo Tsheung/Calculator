@@ -11,7 +11,8 @@ body {
     min-width:350px;
     max-height:500px;
     border-radius:5px;
-    justify-content:center;
+    align-items:center;
+    flex-direction:column;
 }
 
 
@@ -32,7 +33,7 @@ body {
     margin-bottom:8px;
 }
 
-p{
+.numbers p {
     display:flex;
     border:2px solid black;
     padding:10px;
@@ -46,5 +47,23 @@ p{
     margin-bottom:0px;
 }
 
+.display{
+    display:flex;
+    margin-top:15px;
+    margin-left:15px;
+    margin-right:15px;
+    height:100px;
+    width:280px;
+    border:2px solid black;
+    padding-left:10px;
+    padding-right:10px;
+}
 
+.display > p {
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    width:100%;
+    font-size:35px;
+}
 
