@@ -26,7 +26,21 @@ function operate(operator, a, b) {
     }
 }
 
+//Holds Display Number
+let displayNum = 0;
 
+//Holds Number in Memory
+
+
+
+//Click Reaction
+const button = document.querySelectorAll("p");
+button.forEach((b) => {
+    b.addEventListener("click", () => {
+        console.log(b.innerHTML);
+
+    })
+})
 
 
 
