@@ -11,7 +11,11 @@ function multiply(a,b) {
 }
 
 function divide(a,b) {
-    return (Number(a) / Number(b));
+    if(Number(b) === 0){
+        return "Are you kidding me?";
+    } else{
+        return ((Number(a) / Number(b)));
+    }
 }
 
 function operate(operator, a, b) {
@@ -55,22 +59,12 @@ numerical.forEach((n) => {
 })
 
 
-/*
-const special = document.querySelectorAll(".sp");
-special.forEach((s) => {
-    s.addEventListener("click", () => {
-
-
-    })
-})
-*/
-
 //Needs to capture the operation button for future use of =
 const math = document.querySelectorAll(".op");
 math.forEach((m) => {
     m.addEventListener("click", () => {
         if(m.innerHTML == "+") {
-            action = "add";
+            
             if(memoryNum != 0) {
                 displayNum = operate(action, memoryNum, displayNum);
                 //console.log("Calc", displayNum);
@@ -81,34 +75,32 @@ math.forEach((m) => {
                 memoryNum = displayNum;
                 displayNum = 0;
             }
+            action = "add";
         } else if(m.innerHTML == "-") {
+            if(memoryNum != 0) {
+                displayNum = operate(action, memoryNum, displayNum);
+                //console.log(displayNum);
+                calculate.innerHTML = displayNum;
+                memoryNum = displayNum;
+                displayNum = 0;
+            } else {
+                memoryNum = displayNum;
+                displayNum = 0;
+            }
             action = "subtract";
-            if(memoryNum != 0) {
-                displayNum = operate(action, memoryNum, displayNum);
-                //console.log(displayNum);
-                calculate.innerHTML = displayNum;
-                memoryNum = displayNum;
-                displayNum = 0;
-            } else {
-                memoryNum = displayNum;
-                displayNum = 0;
-
-            }
         } else if(m.innerHTML == "x") {
+            if(memoryNum != 0) {
+                displayNum = operate(action, memoryNum, displayNum);
+                //console.log(displayNum);
+                calculate.innerHTML = displayNum;
+                memoryNum = displayNum;
+                displayNum = 0;
+            } else {
+                memoryNum = displayNum;
+                displayNum = 0;
+            }
             action = "multiply";
-            if(memoryNum != 0) {
-                displayNum = operate(action, memoryNum, displayNum);
-                //console.log(displayNum);
-                calculate.innerHTML = displayNum;
-                memoryNum = displayNum;
-                displayNum = 0;
-            } else {
-                memoryNum = displayNum;
-                displayNum = 0;
-
-            }
         } else if(m.innerHTML == "÷") {
-            action = "divide";
             if(memoryNum != 0) {
                 displayNum = operate(action, memoryNum, displayNum);
                 //console.log(displayNum);
@@ -118,8 +110,8 @@ math.forEach((m) => {
             } else {
                 memoryNum = displayNum;
                 displayNum = 0;
-
             }
+            action = "divide";
         } else if(m.innerHTML == "=") {
             displayNum = operate(action, memoryNum, displayNum);
             memoryNum = 0;
@@ -129,14 +121,6 @@ math.forEach((m) => {
         }
     })
 })
-
-
-
-//% moves decimals left twice
-//Click for - click again for + or nothing
-//CE to clear displayNum not saved array
-//C to clear everything
-//Click only once for decimal
 
 const special = document.querySelectorAll(".sp");
 special.forEach((s) => {
@@ -168,5 +152,19 @@ special.forEach((s) => {
 
     })
 })
+
+const hoverButton = document.querySelectorAll(".sp, .num, .op");
+hoverButton.forEach((h) => {
+    //Changes background when hovering
+    h.addEventListener("mouseover", () => {
+        h.style.backgroundColor = "grey";
+    })
+    //Changes background back
+    h.addEventListener("mouseleave", () => {
+        h.style.backgroundColor = "white";
+    })
+})
+
+
 
 
