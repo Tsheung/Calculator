@@ -34,18 +34,21 @@ let memoryNum = 0;
 
 //Holds the Operator
 let action;
-//Click Reaction to Only Numbers
 
+//Obtains display Number
+const calculate = document.querySelector(".mainNum");
+
+//Click Reaction to Only Numbers
 const numerical = document.querySelectorAll(".num");
 numerical.forEach((n) => {
     n.addEventListener("click", () => {
         //Each click saves to displayNum
         if(displayNum == 0) {
             displayNum = n.innerHTML;
-            console.log(displayNum);
+            calculate.innerHTML = displayNum;
         } else {
             displayNum = displayNum + n.innerHTML;
-            console.log(displayNum);
+            calculate.innerHTML = displayNum;
         }
     })
 })
@@ -69,7 +72,8 @@ math.forEach((m) => {
             action = "add";
             if(memoryNum != 0) {
                 displayNum = operate(action, memoryNum, displayNum);
-                console.log("Calc", displayNum);
+                //console.log("Calc", displayNum);
+                calculate.innerHTML = displayNum;
                 memoryNum = displayNum;
                 displayNum = 0;
             } else {
@@ -80,7 +84,8 @@ math.forEach((m) => {
             action = "subtract";
             if(memoryNum != 0) {
                 displayNum = operate(action, memoryNum, displayNum);
-                console.log(displayNum);
+                //console.log(displayNum);
+                calculate.innerHTML = displayNum;
                 memoryNum = displayNum;
                 displayNum = 0;
             } else {
@@ -92,7 +97,8 @@ math.forEach((m) => {
             action = "multiply";
             if(memoryNum != 0) {
                 displayNum = operate(action, memoryNum, displayNum);
-                console.log(displayNum);
+                //console.log(displayNum);
+                calculate.innerHTML = displayNum;
                 memoryNum = displayNum;
                 displayNum = 0;
             } else {
@@ -104,7 +110,8 @@ math.forEach((m) => {
             action = "divide";
             if(memoryNum != 0) {
                 displayNum = operate(action, memoryNum, displayNum);
-                console.log(displayNum);
+                //console.log(displayNum);
+                calculate.innerHTML = displayNum;
                 memoryNum = displayNum;
                 displayNum = 0;
             } else {
@@ -115,7 +122,9 @@ math.forEach((m) => {
         } else if(m.innerHTML == "=") {
             displayNum = operate(action, memoryNum, displayNum);
             memoryNum = 0;
-            console.log("Final:", displayNum);
+            //console.log("Final:", displayNum);
+            calculate.innerHTML = displayNum;
+
         }
     })
 })
