@@ -1,17 +1,17 @@
 function add(a,b) {
-    return (a+b);
+    return (Number(a) + Number(b));
 }
 
 function subtract(a,b) {
-    return(a-b);
+    return (Number(a) - Number(b));
 }
 
 function multiply(a,b) {
-    return(a*b);
+    return (Number(a) * Number(b));
 }
 
 function divide(a,b) {
-    return(a/b);
+    return (Number(a) / Number(b));
 }
 
 function operate(operator, a, b) {
@@ -30,21 +30,103 @@ function operate(operator, a, b) {
 let displayNum = 0;
 
 //Holds Number in Memory
+let memoryNum = 0;
 
+//Holds the Operator
+let action;
+//Click Reaction to Only Numbers
 
-
-//Click Reaction to Only Numbers 
-const button = document.querySelectorAll(".num");
-button.forEach((b) => {
-    b.addEventListener("click", () => {
+const numerical = document.querySelectorAll(".num");
+numerical.forEach((n) => {
+    n.addEventListener("click", () => {
         //Each click saves to displayNum
         if(displayNum == 0) {
-            displayNum = b.innerHTML;
+            displayNum = n.innerHTML;
+            console.log(displayNum);
         } else {
-            displayNum = displayNum + b.innerHTML;
+            displayNum = displayNum + n.innerHTML;
+            console.log(displayNum);
         }
     })
 })
+
+
+/*
+const special = document.querySelectorAll(".sp");
+special.forEach((s) => {
+    s.addEventListener("click", () => {
+
+
+    })
+})
+*/
+
+//Needs to capture the operation button for future use of =
+const math = document.querySelectorAll(".op");
+math.forEach((m) => {
+    m.addEventListener("click", () => {
+        if(m.innerHTML == "+") {
+            action = "add";
+            if(memoryNum != 0) {
+                displayNum = operate(action, memoryNum, displayNum);
+                console.log("Calc", displayNum);
+                memoryNum = displayNum;
+                displayNum = 0;
+            } else {
+                memoryNum = displayNum;
+                displayNum = 0;
+            }
+        } else if(m.innerHTML == "-") {
+            action = "subtract";
+            if(memoryNum != 0) {
+                displayNum = operate(action, memoryNum, displayNum);
+                console.log(displayNum);
+                memoryNum = displayNum;
+                displayNum = 0;
+            } else {
+                memoryNum = displayNum;
+                displayNum = 0;
+
+            }
+        } else if(m.innerHTML == "x") {
+            action = "multiply";
+            if(memoryNum != 0) {
+                displayNum = operate(action, memoryNum, displayNum);
+                console.log(displayNum);
+                memoryNum = displayNum;
+                displayNum = 0;
+            } else {
+                memoryNum = displayNum;
+                displayNum = 0;
+
+            }
+        } else if(m.innerHTML == "÷") {
+            action = "divide";
+            if(memoryNum != 0) {
+                displayNum = operate(action, memoryNum, displayNum);
+                console.log(displayNum);
+                memoryNum = displayNum;
+                displayNum = 0;
+            } else {
+                memoryNum = displayNum;
+                displayNum = 0;
+
+            }
+        } else if(m.innerHTML == "=") {
+            displayNum = operate(action, memoryNum, displayNum);
+            memoryNum = 0;
+            console.log("Final:", displayNum);
+        }
+    })
+})
+
+
+
+//% moves decimals left twice
+//Click for - click again for + or nothing
+//CE to clear displayNum not saved array
+//C to clear everything
+//Click only once for decimal
 
 
 
