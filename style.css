@@ -1,19 +1,25 @@
 body {
     display:flex;
-    justify-content:center;
+    flex-direction:column;
+    align-items:center;
     height:100vh;
+    width:100%;
     margin:0;
     font-family:Andale Mono, monospace;
+    background-color:#F1F7ED; /* Colors whole background*/
 }
 
 .contain{
     display:flex;
-    border:2px solid black;
-    min-width:350px;
+    margin-top:150px;
+    width:350px;
     max-height:500px;
     border-radius:5px;
     align-items:center;
+    align-content:center;
     flex-direction:column;
+    background-color:#D80032; /*Color Calc*/
+    flex-grow:1;
 }
 
 
@@ -36,7 +42,7 @@ body {
 
 .numbers p {
     display:flex;
-    border:2px solid black;
+    border:2px solid #DE1A1A;
     padding:10px;
     font-size:25px;
     border-radius:5px;
@@ -46,6 +52,7 @@ body {
     align-items:center;
     margin-top:0px;
     margin-bottom:0px;
+    background-color:white; /*Color buttons */
 }
 
 .display{
@@ -55,10 +62,11 @@ body {
     margin-right:15px;
     height:100px;
     width:280px;
-    border:2px solid black;
+    border:2px solid #DE1A1A;
     padding-left:10px;
     padding-right:10px;
     border-radius:5px;
+    background-color:white; /*Color Display*/
 }
 
 .display > p {
@@ -69,3 +77,21 @@ body {
     font-size:35px;
 }
 
+.github{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family: "Gill Sans", sans-serif;
+    font-size:20px;
+    width:100%;
+    justify-content:center;
+    background-color:#DAF0EE;
+    height:50px;
+    flex-shrink: 0;
+    position:fixed;
+    bottom:0;
+}
+
+.github img {
+    height:30px;
+}

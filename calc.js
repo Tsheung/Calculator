@@ -153,14 +153,28 @@ const hoverButton = document.querySelectorAll(".sp, .num, .op");
 hoverButton.forEach((h) => {
     //Changes background when hovering
     h.addEventListener("mouseover", () => {
-        h.style.backgroundColor = "grey";
+        h.style.backgroundColor = "#DEECD5";
     })
     //Changes background back
     h.addEventListener("mouseleave", () => {
-        h.style.backgroundColor = "white";
+        h.style.backgroundColor = "white"; 
     })
 })
 
+//Create Bottom Banner Click to Github
+const banner = document.createElement('div');
+banner.classList.add("github");
+const image = document.createElement('img');
+image.src = "Images/github.png"
+image.setAttribute("alt", "Github logo that links to my github");
+image.addEventListener("click", () => {
+    window.open("https://github.com/Tsheung/Calculator", "_blank");
+})
+const username = document.createElement('p');
+username.innerHTML = "Tsheung";
+banner.appendChild(image);
+banner.appendChild(username);
+document.body.appendChild(banner);
 
 
 
