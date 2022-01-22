@@ -1,3 +1,16 @@
+//Holds Display Number
+let displayNum = 0;
+
+//Holds Number in Memory
+let memoryNum = 0;
+
+//Holds the Operator
+let action;
+
+//Holds display Number
+const calculate = document.querySelector(".mainNum");
+
+
 function add(a,b) {
     return (Number(a) + Number(b));
 }
@@ -32,23 +45,26 @@ function operate(operator, a, b) {
     }
 }
 
+//Rounds to three decimals
 function threeDecimals(num) {
     return Math.round((num + Number.EPSILON)*10000)/10000;
 }
 
-
-//Holds Display Number
-let displayNum = 0;
-
-//Holds Number in Memory
-let memoryNum = 0;
-
-//Holds the Operator
-let action;
-
-//Obtains display Number
-const calculate = document.querySelector(".mainNum");
-
+//Computes math
+function computeMath() {
+    if(memoryNum != 0) {
+        displayNum = operate(action, memoryNum, displayNum);
+        if(displayNum.toString().length > 9) {
+            displayNum = displayNum.toExponential(4);
+        }
+        calculate.innerHTML = displayNum;
+        memoryNum = displayNum;
+        displayNum = 0;
+    } else {
+        memoryNum = displayNum;
+        displayNum = 0;
+    }
+}
 
 //Click Reaction to Only Numbers
 const numerical = document.querySelectorAll(".num");
@@ -72,25 +88,7 @@ numerical.forEach((n) => {
     })
 })
 
-
-function computeMath() {
-    if(memoryNum != 0) {
-        displayNum = operate(action, memoryNum, displayNum);
-        if(displayNum.toString().length > 9) {
-            displayNum = displayNum.toExponential(4);
-        }
-        calculate.innerHTML = displayNum;
-        memoryNum = displayNum;
-        displayNum = 0;
-    } else {
-        memoryNum = displayNum;
-        displayNum = 0;
-    }
-}
-
-
-
-//Needs to capture the operation button for future use of =
+//Operation calculation
 const math = document.querySelectorAll(".op");
 math.forEach((m) => {
     m.addEventListener("click", () => {
@@ -118,6 +116,7 @@ math.forEach((m) => {
     })
 })
 
+//For special cases of delete, percentage...
 const special = document.querySelectorAll(".sp");
 special.forEach((s) => {
     s.addEventListener("click", () => {
@@ -149,6 +148,7 @@ special.forEach((s) => {
     })
 })
 
+//Hovering over buttons
 const hoverButton = document.querySelectorAll(".sp, .num, .op");
 hoverButton.forEach((h) => {
     //Changes background when hovering
