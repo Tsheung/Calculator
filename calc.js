@@ -165,7 +165,7 @@ hoverButton.forEach((h) => {
 const banner = document.createElement('div');
 banner.classList.add("github");
 const image = document.createElement('img');
-image.src = "Images/github.png"
+image.src = "Images/Github.png"
 image.setAttribute("alt", "Github logo that links to my github");
 image.addEventListener("click", () => {
     window.open("https://github.com/Tsheung/Calculator", "_blank");
