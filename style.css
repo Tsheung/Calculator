@@ -85,13 +85,13 @@ body {
     font-size:20px;
     width:100%;
     justify-content:center;
-    background-color:#DAF0EE;
-    height:50px;
+    background-color:#DAF0EE; /*Banner color #DAF0EE*/
+    height:45px;
     flex-shrink: 0;
     position:fixed;
     bottom:0;
 }
 
 .github img {
-    height:30px;
+    height:25px;
 }
