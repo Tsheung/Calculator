@@ -52,8 +52,15 @@ numerical.forEach((n) => {
             displayNum = n.innerHTML;
             calculate.innerHTML = displayNum;
         } else {
-            displayNum = displayNum + n.innerHTML;
-            calculate.innerHTML = displayNum;
+            //User cannot exceed 12 numbers
+            if(displayNum.length < 12){
+                displayNum = displayNum + n.innerHTML;
+                calculate.innerHTML = displayNum;
+            } else {
+                displayNum = 0;
+                calculate.innerHTML = displayNum;
+            }
+            
         }
     })
 })
