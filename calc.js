@@ -7,14 +7,16 @@ function subtract(a,b) {
 }
 
 function multiply(a,b) {
-    return (Number(a) * Number(b));
+    let multNum = Number(a) * Number(b);
+    return threeDecimals(multNum);
 }
 
 function divide(a,b) {
     if(Number(b) === 0){
         return "Are you kidding me?";
     } else{
-        return ((Number(a) / Number(b)));
+        let divNum = (Number(a) / Number(b));
+        return threeDecimals(divNum);
     }
 }
 
@@ -29,6 +31,11 @@ function operate(operator, a, b) {
         return divide(a,b);
     }
 }
+
+function threeDecimals(num) {
+    return Math.round((num + Number.EPSILON)*10000)/10000;
+}
+
 
 //Holds Display Number
 let displayNum = 0;
@@ -66,63 +73,45 @@ numerical.forEach((n) => {
 })
 
 
+function computeMath() {
+    if(memoryNum != 0) {
+        displayNum = operate(action, memoryNum, displayNum);
+        if(displayNum.toString().length > 9) {
+            displayNum = displayNum.toExponential(4);
+        }
+        calculate.innerHTML = displayNum;
+        memoryNum = displayNum;
+        displayNum = 0;
+    } else {
+        memoryNum = displayNum;
+        displayNum = 0;
+    }
+}
+
+
+
 //Needs to capture the operation button for future use of =
 const math = document.querySelectorAll(".op");
 math.forEach((m) => {
     m.addEventListener("click", () => {
         if(m.innerHTML == "+") {
-            
-            if(memoryNum != 0) {
-                displayNum = operate(action, memoryNum, displayNum);
-                //console.log("Calc", displayNum);
-                calculate.innerHTML = displayNum;
-                memoryNum = displayNum;
-                displayNum = 0;
-            } else {
-                memoryNum = displayNum;
-                displayNum = 0;
-            }
+            computeMath();
             action = "add";
         } else if(m.innerHTML == "-") {
-            if(memoryNum != 0) {
-                displayNum = operate(action, memoryNum, displayNum);
-                //console.log(displayNum);
-                calculate.innerHTML = displayNum;
-                memoryNum = displayNum;
-                displayNum = 0;
-            } else {
-                memoryNum = displayNum;
-                displayNum = 0;
-            }
+            computeMath();
             action = "subtract";
         } else if(m.innerHTML == "x") {
-            if(memoryNum != 0) {
-                displayNum = operate(action, memoryNum, displayNum);
-                //console.log(displayNum);
-                calculate.innerHTML = displayNum;
-                memoryNum = displayNum;
-                displayNum = 0;
-            } else {
-                memoryNum = displayNum;
-                displayNum = 0;
-            }
+            computeMath();
             action = "multiply";
         } else if(m.innerHTML == "÷") {
-            if(memoryNum != 0) {
-                displayNum = operate(action, memoryNum, displayNum);
-                //console.log(displayNum);
-                calculate.innerHTML = displayNum;
-                memoryNum = displayNum;
-                displayNum = 0;
-            } else {
-                memoryNum = displayNum;
-                displayNum = 0;
-            }
+            computeMath();
             action = "divide";
         } else if(m.innerHTML == "=") {
             displayNum = operate(action, memoryNum, displayNum);
             memoryNum = 0;
-            //console.log("Final:", displayNum);
+            if(displayNum.toString().length > 9) {
+                displayNum = displayNum.toExponential(4);
+            }
             calculate.innerHTML = displayNum;
 
         }
